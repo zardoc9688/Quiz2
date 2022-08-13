@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+ul li {
+  text-transform: lowercase; 
+  cursor: pointer;
+  position: relative;
+  padding: 12px 8px 12px 40px;
+  background: #eee;
+  font-size: 18px;
+  transition: 0.2s;
+  
+}
+
+.header {
+  background-color: #15b600;
+  padding: 30px 40px;
+  color: white;
+  text-align: center;
+}
+
+.header:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+input {
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  width: 75%;
+  padding: 10px;
+  float: left;
+  font-size: 16px;
+}
+
+
+
+.addBtn {
+  padding: 10px;
+  width: 25%;
+  background: #353535;
+  color: rgb(255, 255, 255);
+  float: right;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 0;
+  
+}
+.addBtn:hover {
+  background-color: #bbb;
+}
+
+.addBtntwo {
+  padding: 10px;
+  width: 25%;
+  background: #353535;
+  color: rgb(255, 255, 255);
+  float: right;
+  text-align: center;
+  font-size: 16px;
+  clear: right;
+  transition: 0.3s;
+  border-radius: 0;
+}
+.addBtntwo:hover {
+  background-color: #bbb;
+}
+</style>
+</head>
+<body>
+
+<div id="MrJhoan" class="header">
+  <h2 style="margin:5px">Lista</h2>
+  <input type="text" id="myInput" placeholder="Escribe lo que sea...">
+  <span onclick="newElement()" class="addBtn">Agregar</span>
+  <span id="borrar" onclick="remove_child()" class="addBtn">Borrar</span>
+  <br><span id="Borrar Todo" onclick="deleteAll()" class="addBtntwo">Borrar Todo</span>
+</div>
+
+<ul id="Lista">
+  <li>caminar</li>
+  <li class="checked">Correr</li>
+  <li>Saltar</li>
+  <li>Manejar</li>
+</ul>
+
+<script>
+
+var listafunc = document.querySelector("ul");
+var spanDelete = document.getElementById("borrar");
+
+function deleteAll(){
+    var todo =  document.getElementById("Lista");
+    var lis = todo.getElementsByTagName("li");
+    console.log(lis);
+    while(lis.length > 0){                   
+        todo.removeChild(lis[0]);
+        }
+};       
+
+function remove_child() {
+  var list = document.getElementById("Lista");
+  var item = listafunc.lastElementChild;
+  list.removeChild(item);
+}
+
+function newElement() {
+  var li = document.createElement("li");
+  var inputValue = document.getElementById("myInput").value;
+  var t = document.createTextNode(inputValue);
+  li.appendChild(t);
+  if (inputValue === '') {
+    alert("¡Tienes que escribir algo!");
+  } else {
+    document.getElementById("Lista").appendChild(li);
+  }
+  document.getElementById("myInput").value = "";
+  span.appendChild(txt);
+  li.appendChild(span);
+}
+
+</script>
+
+</body>
+</html>
